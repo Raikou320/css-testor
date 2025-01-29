@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CSS Testor Is A Simple CSS Tester Developed By Raikou 320"
+    />
+    <link rel="stylesheet" href="./raicss/main.css" />
+    <script src="./raicss/main.js"></script>
+    <title>CSS Testor</title>
+  </head>
+  <body>
+    <form id="box-shadow">
+      <h3>Box-Shadow:</h3>
+      <label for="box-shadow__x-offset-input">X Offset:</label>
+      <input type="range" min="-10" max="10" id="box-shadow__x-offset-input" />
+      <br />
+      <label for="box-shadow__y-offset-input">Y Offset:</label>
+      <input type="range" min="-10" max="10" id="box-shadow__y-offset-input" />
+      <br />
+      <label for="box-shadow__blur-input">Blur:</label>
+      <input type="range" min="0" max="10" id="box-shadow__blur-input" />
+      <br />
+      <label for="box-shadow__expanse-input">Expanse:</label>
+      <input type="range" min="0" max="10" id="box-shadow__expanse-input" />
+      <br />
+      <label for="box-shadow__color-input">Color:</label>
+      <input type="text" id="box-shadow__color-input" />
+      <br />
+      <label for="box-shadow__result-bg">Result Background Color:</label>
+      <input type="text" id="box-shadow__result-bg">
+    </form>
+    <div id="box-shadow__result" class="w w[150px] h h[150px] absolute right top right[25px] top[25px]"></div>
+    <script>
+      const offsetX = document.getElementById('box-shadow__x-offset-input');
+      const offsetY = document.getElementById('box-shadow__y-offset-input');
+      const shadowBlur = document.getElementById('box-shadow__blur-input');
+      const expanse = document.getElementById('box-shadow__expanse-input');
+      const color = document.getElementById('box-shadow__color-input');
+      const resultBg = document.getElementById('box-shadow__result-bg')
+      const result = document.getElementById('box-shadow__result');
+      offsetX.addEventListener(
+        'input',
+        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+      );
+      offsetY.addEventListener(
+        'input',
+        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+      );
+      shadowBlur.addEventListener(
+        'input',
+        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+      );
+      expanse.addEventListener(
+        'input',
+        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value} ${color.value || "#000"}`)
+      );
+      color.addEventListener(
+        'input',
+        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+      );
+      resultBg.addEventListener('input', () => result.style.background = resultBg.value)
+    </script>
+  </body>
+</html>
