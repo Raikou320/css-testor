@@ -30,47 +30,87 @@
       <input type="color" id="box-shadow__color-input" />
       <br />
       <label for="box-shadow__result-bg">Result Background Color:</label>
-      <input type="color" id="box-shadow__result-bg">
+      <input type="color" id="box-shadow__result-bg" />
     </form>
-    <button class="base-btn w w[50px] h h[50px]" id="box-shadow__reset-btn">Reset</button>
+    <button class="base-btn w w[50px] cursor-pointer h h[50px]" id="box-shadow__reset-btn">
+      Reset
+    </button>
+    <button
+      class="bg-light-red text-capitalize cursor-pointer color-white w w[75px] border-none h h[75px] rounded text-center margin-10-px padding-10-px"
+      id="box-shadow__copy-code"
+    >copy code</button>
     <article>
-      <h2 class="text-capitalize">box-shadow</h2>
+      <h3 class="text-capitalize">
+        box-shadow can do shadows with css with 4 or 5 params: offsetX offsetY
+        blur expanse (optional) color we can do multi shadows doing:
+      </h3>
+      <h4>
+        Example: box-shadow: 2px 3px 5px 7px #000, 5px 2px 6px 8px #1A1A1A;
+      </h4>
+      <h5>Important the shadows must be separated by comma</h5>
     </article>
-    <div id="box-shadow__result" class="bg-black box-shadow box-shadow[5px:5px:5px:5px:#000] w w[150px] h h[150px] absolute right top right[25px] top[25px]"></div>
+    <div
+      id="box-shadow__result"
+      class="bg-black box-shadow box-shadow[5px:5px:5px:5px:#000] w w[150px] h h[150px] absolute right top right[25px] top[25px]"
+    ></div>
     <script>
       const offsetX = document.getElementById('box-shadow__x-offset-input');
       const offsetY = document.getElementById('box-shadow__y-offset-input');
       const shadowBlur = document.getElementById('box-shadow__blur-input');
       const expanse = document.getElementById('box-shadow__expanse-input');
       const color = document.getElementById('box-shadow__color-input');
-      const resultBg = document.getElementById('box-shadow__result-bg')
+      const resultBg = document.getElementById('box-shadow__result-bg');
       const result = document.getElementById('box-shadow__result');
-      const resetBtn = document.getElementById('box-shadow__reset-btn')
+      const resetBtn = document.getElementById('box-shadow__reset-btn');
+      const copyCode = document.getElementById('box-shadow__copy-code');
       offsetX.addEventListener(
         'input',
-        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+        () =>
+          (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${
+            shadowBlur.value
+          }px ${expanse.value}px ${color.value || '#000'}`)
       );
       offsetY.addEventListener(
         'input',
-        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+        () =>
+          (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${
+            shadowBlur.value
+          }px ${expanse.value}px ${color.value || '#000'}`)
       );
       shadowBlur.addEventListener(
         'input',
-        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+        () =>
+          (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${
+            shadowBlur.value
+          }px ${expanse.value}px ${color.value || '#000'}`)
       );
       expanse.addEventListener(
         'input',
-        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value} ${color.value || "#000"}`)
+        () =>
+          (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${
+            shadowBlur.value
+          }px ${expanse.value} ${color.value || '#000'}`)
       );
       color.addEventListener(
         'input',
-        () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
+        () =>
+          (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${
+            shadowBlur.value
+          }px ${expanse.value}px ${color.value || '#000'}`)
       );
-      resultBg.addEventListener('input', () => result.style.background = resultBg.value)
+      resultBg.addEventListener(
+        'input',
+        () => (result.style.background = resultBg.value)
+      );
       resetBtn.addEventListener('click', () => {
-        offsetX.value, offsetY.value, shadowBlur.value, expanse.value = '5'
-        color.value = '#000000'
-      })
+        offsetX.value = '0';
+        offsetY.value = '0';
+        shadowBlur.value = '5';
+        expanse.value = '5';
+        resultBg.value = '#000000';
+        color.value = '#000000';
+      });
+      copyCode.addEventListener('click', () => navigator.clipboard.writeText('box-shadow: ' + result.style.boxShadow + ';'))
     </script>
   </body>
 </html>
