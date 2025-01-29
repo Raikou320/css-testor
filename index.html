@@ -27,12 +27,16 @@
       <input type="range" min="0" max="10" id="box-shadow__expanse-input" />
       <br />
       <label for="box-shadow__color-input">Color:</label>
-      <input type="text" id="box-shadow__color-input" />
+      <input type="color" id="box-shadow__color-input" />
       <br />
       <label for="box-shadow__result-bg">Result Background Color:</label>
-      <input type="text" id="box-shadow__result-bg">
+      <input type="color" id="box-shadow__result-bg">
     </form>
-    <div id="box-shadow__result" class="w w[150px] h h[150px] absolute right top right[25px] top[25px]"></div>
+    <button class="base-btn w w[50px] h h[50px]" id="box-shadow__reset-btn">Reset</button>
+    <article>
+      <h2 class="text-capitalize">box-shadow</h2>
+    </article>
+    <div id="box-shadow__result" class="bg-black box-shadow box-shadow[5px:5px:5px:5px:#000] w w[150px] h h[150px] absolute right top right[25px] top[25px]"></div>
     <script>
       const offsetX = document.getElementById('box-shadow__x-offset-input');
       const offsetY = document.getElementById('box-shadow__y-offset-input');
@@ -41,6 +45,7 @@
       const color = document.getElementById('box-shadow__color-input');
       const resultBg = document.getElementById('box-shadow__result-bg')
       const result = document.getElementById('box-shadow__result');
+      const resetBtn = document.getElementById('box-shadow__reset-btn')
       offsetX.addEventListener(
         'input',
         () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
@@ -62,6 +67,10 @@
         () => (result.style.boxShadow = `${offsetX.value}px ${offsetY.value}px ${shadowBlur.value}px ${expanse.value}px ${color.value || "#000"}`)
       );
       resultBg.addEventListener('input', () => result.style.background = resultBg.value)
+      resetBtn.addEventListener('click', () => {
+        offsetX.value, offsetY.value, shadowBlur.value, expanse.value = '5'
+        color.value = '#000000'
+      })
     </script>
   </body>
 </html>
